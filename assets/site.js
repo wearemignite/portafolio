@@ -26,6 +26,53 @@
     }
   }
 
+  // Encendido: la tarjeta sigue al cursor, se ilumina y suelta chispas
+  const deck = document.querySelector('.deck');
+  if (deck) {
+    let last = 0;
+    const spark = (x, y, n) => {
+      if (calm) return;
+      const box = deck.getBoundingClientRect();
+      for (let i = 0; i < n; i++) {
+        const s = document.createElement('i');
+        s.className = 'spark';
+        s.style.setProperty('--sz', 14 + Math.random() * 22 + 'px');
+        deck.append(s);
+        const a = Math.random() * Math.PI * 2, d = 60 + Math.random() * 120;
+        const x0 = x - box.left, y0 = y - box.top;
+        s.animate([
+          { transform: `translate(${x0}px,${y0}px) translate(-50%,-50%) scale(.4) rotate(0deg)`, opacity: 1 },
+          { transform: `translate(${x0 + Math.cos(a) * d}px,${y0 + Math.sin(a) * d - 40}px) translate(-50%,-50%) scale(1) rotate(130deg)`, opacity: 1, offset: .7 },
+          { transform: `translate(${x0 + Math.cos(a) * d * 1.25}px,${y0 + Math.sin(a) * d * 1.25 - 16}px) translate(-50%,-50%) scale(0) rotate(210deg)`, opacity: 0 }
+        ], { duration: 800 + Math.random() * 500, easing: 'cubic-bezier(.2,.7,.3,1)' }).onfinish = () => s.remove();
+      }
+    };
+    deck.querySelectorAll('.tile').forEach(t => {
+      const tilt = t.querySelector('.tilt');
+      const aim = e => {
+        const r = t.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+        if (!calm) {
+          tilt.style.setProperty('--ry', ((px - .5) * 22).toFixed(1));
+          tilt.style.setProperty('--rx', ((.5 - py) * 16).toFixed(1));
+        }
+        tilt.style.setProperty('--gx', (px * 100).toFixed(0) + '%');
+        tilt.style.setProperty('--gy', (py * 100).toFixed(0) + '%');
+      };
+      t.addEventListener('pointerenter', e => { aim(e); t.classList.add('lit'); spark(e.clientX, e.clientY, 12); });
+      t.addEventListener('pointermove', e => {
+        aim(e);
+        const now = performance.now();
+        if (now - last > 90) { last = now; spark(e.clientX, e.clientY, 1); }
+      });
+      t.addEventListener('pointerleave', () => {
+        t.classList.remove('lit');
+        tilt.style.setProperty('--rx', 0);
+        tilt.style.setProperty('--ry', 0);
+      });
+    });
+  }
+
   // La frase corre por la curva de la M: se mueve sola y con el scroll
   const path = document.querySelector('.wave textPath');
   const frame = document.querySelector('.reel-frame');
