@@ -128,11 +128,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .case-media .phone{position:absolute;right:clamp(10px,1.6vw,22px);bottom:clamp(-40px,-4vw,-16px);width:clamp(96px,17%,210px);aspect-ratio:9/16;border-radius:clamp(14px,1.8vw,26px);overflow:hidden;box-shadow:0 18px 44px rgba(0,0,0,.42);background:#000;transition:transform .7s var(--ease)}
 .case-media .phone video,.case-media .phone img{width:100%;height:100%;object-fit:cover}
 .case:hover .phone{transform:translateY(-10px) rotate(-2deg)}
-.case-info{grid-column:10/span 3;display:grid;gap:12px;align-content:end}
+.case-info{grid-column:10/span 3;display:grid;gap:12px;align-content:end;container-type:inline-size}
 .case:nth-child(even) .case-media{grid-column:4/span 9;order:2}
 .case:nth-child(even) .case-info{grid-column:1/span 3;order:1}
 .case:nth-child(even) .phone{right:auto;left:clamp(10px,1.6vw,22px)}
-.case h3{font-size:var(--h3);line-height:1.02;letter-spacing:-.03em;font-weight:800}
+.case h3{--n:7;font-size:min(var(--h3),calc(100cqi/(var(--n)*.6)));line-height:1.02;letter-spacing:-.03em;font-weight:800}
 .case p{font-size:1rem;line-height:1.45}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .tags li{font-size:.78rem;font-weight:500;padding:3px 10px;border-radius:999px;box-shadow:inset 0 0 0 1.5px currentColor}
@@ -203,7 +203,7 @@ dialog.lb img,dialog.lb video{max-width:100%;max-height:86vh;width:auto;height:a
 
 /* Página de proyecto */
 .p-hero{padding:clamp(100px,14vh,150px) calc(var(--gut) + 6px) clamp(30px,4vw,50px)}
-.p-hero h1{font-size:clamp(2.8rem,9vw,8.6rem);line-height:.94;letter-spacing:-.045em;font-weight:800}
+.p-hero h1{font-size:clamp(min(2.8rem,12.4vw),9vw,8.6rem);line-height:.94;letter-spacing:-.045em;font-weight:800}
 .p-hero .lead{margin-top:18px;max-width:42ch}
 .p-main{margin:0 var(--gut);border-radius:var(--r-xl);overflow:hidden;background:#000}
 .p-main video,.p-main img{width:100%;height:auto;max-height:86vh;object-fit:contain;margin:auto}
@@ -231,7 +231,7 @@ dialog.lb img,dialog.lb video{max-width:100%;max-height:86vh;width:auto;height:a
 .p-grid.vert{columns:4 200px}
 .next{display:block;text-decoration:none;padding:clamp(50px,8vw,110px) calc(var(--gut) + 6px) clamp(110px,12vw,150px);border-top:1px solid var(--line)}
 .next small{font-size:1rem;opacity:.8}
-.next b{display:block;font-size:clamp(2.4rem,8vw,7.6rem);line-height:.98;letter-spacing:-.04em;font-weight:800}
+.next b{display:block;font-size:clamp(min(2.4rem,12.4vw),8vw,7.6rem);line-height:.98;letter-spacing:-.04em;font-weight:800}
 
 @media (max-width:900px){
   .sec-head{grid-template-columns:1fr}
