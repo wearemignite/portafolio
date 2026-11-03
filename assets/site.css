@@ -36,6 +36,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* Cabecera */
 .top{position:absolute;z-index:50;left:0;right:0;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:calc(var(--bez) + 14px) calc(var(--gut) + 6px) 0}
+.top .brand{display:block;padding-block:6px}
+.top .tab{padding-block:9px}
 .top .brand img{height:clamp(30px,3.2vw,42px);width:auto}
 .top .tab{display:block;background:var(--carbon);padding:9px 18px 9px 14px;border-radius:16px;box-shadow:0 8px 22px rgba(90,25,0,.3)}
 .top .tab img{height:clamp(28px,2.7vw,36px)}
@@ -147,6 +149,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .card h3{font-size:clamp(1.5rem,2.6vw,2.3rem);line-height:1.05;letter-spacing:-.025em;font-weight:800;position:relative}
 .card p{position:relative;max-width:46ch;font-size:1rem;line-height:1.45}
 .card .bg{position:absolute;inset:0;opacity:.34}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--shade,rgba(17,17,17,.9)) 18%,transparent 72%);pointer-events:none}
+.card:nth-child(1){--shade:rgba(255,102,0,.92)}
+.card:nth-child(3){--shade:rgba(255,255,255,.92)}
+.card h3,.card p{z-index:1}
 .card .bg video,.card .bg img{width:100%;height:100%;object-fit:cover}
 .card:nth-child(3) .bg{opacity:.14}
 .also{margin-top:clamp(26px,3vw,40px);font-size:clamp(1rem,1.5vw,1.25rem);font-weight:500;max-width:60ch}
@@ -161,8 +167,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* Equipo */
 .team{background:var(--carbon);color:#fff}
-.team-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(24px,4vw,64px);align-items:end}
-.team img.mike{border-radius:var(--r-xl);width:100%;aspect-ratio:1;object-fit:cover;background:var(--ignicion)}
+.team-grid{display:grid;grid-template-columns:clamp(240px,27vw,360px) minmax(0,1fr);gap:clamp(28px,5vw,80px);align-items:center}
+.team img.mike{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;object-position:50% 40%;border-radius:50%}
 .people{display:grid;gap:0;margin-top:clamp(20px,3vw,36px)}
 .people li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:14px;padding:14px 0;border-top:1px solid rgba(255,255,255,.22)}
 .people b{font-weight:700}
@@ -213,6 +219,7 @@ dialog.lb img,dialog.lb video{max-width:100%;max-height:86vh;width:auto;height:a
   .steps{grid-template-columns:1fr 1fr}
   .facts{grid-template-columns:1fr}
   .team-grid{grid-template-columns:1fr}
+  .team img.mike{width:min(62vw,250px)}
   .facts-sheet{grid-template-columns:1fr 1fr}
   .story{grid-template-columns:1fr}
   .top .btn{display:none}
