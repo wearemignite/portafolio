@@ -223,12 +223,12 @@ dialog.lb img,dialog.lb video{max-width:100%;max-height:86vh;width:auto;height:a
   .facts-sheet{grid-template-columns:1fr 1fr}
   .story{grid-template-columns:1fr}
   .top .btn{display:none}
-  .dock a{padding:9px 11px;font-size:.8125rem}
+  .dock a{padding:12px 12px;font-size:.8125rem}
   .deck{--tw:clamp(104px,29vw,170px)}
   .tile:nth-child(1),.tile:nth-child(5){display:none}
   .tile:nth-child(2){--x:-92}.tile:nth-child(4){--x:92}
 }
-@media (max-width:440px){.dock a{padding:8px 10px;font-size:.78rem}.dock a.hide-s{display:none}}
+@media (max-width:440px){.dock a{padding:12px 11px;font-size:.8rem}.dock a.hide-s{display:none}}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
